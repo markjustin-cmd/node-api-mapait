@@ -1,0 +1,19 @@
+{
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "user": "root",
+    "password": "",
+    "database": "node_mysql_api"
+  },
+  "secret": "SUPER_SECRET_KEY_REPLACE_ME_IN_PRODUCTION",
+  "emailFrom": "jordane.weimann@ethereal.email",
+  "smtpOptions": {
+    "host": "smtp.ethereal.email",
+    "port": 587,
+    "auth": {
+      "user": "jordane.weimann@ethereal.email",
+      "pass": "aF8vhEj52NuVQJFWz5"
+    }
+  }
+}
