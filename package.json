@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node node_modules/.bin/ts-node server.ts",
+    "start": "node dist/server.js",
     "dev": "nodemon --exec ts-node server.ts",
-    "build": "echo no-build"
+    "build": "echo skip"
   },
   "keywords": [],
   "author": "",
