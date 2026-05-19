@@ -4,4 +4,97 @@ info:
   version: 1.0.0
 servers:
   - url: http://localhost:4000
-paths: {}
+paths:
+  /accounts/authenticate:
+    post:
+      summary: Authenticate account credentials and return a JWT token
+      responses:
+        "200":
+          description: OK
+  /accounts/refresh-token:
+    post:
+      summary: Use a refresh token to generate a new JWT token
+      responses:
+        "200":
+          description: OK
+  /accounts/revoke-token:
+    post:
+      summary: Revoke a refresh token
+      responses:
+        "200":
+          description: OK
+  /accounts/register:
+    post:
+      summary: Register a new account
+      responses:
+        "200":
+          description: OK
+  /accounts/verify-email:
+    post:
+      summary: Verify a new account with a verification token
+      responses:
+        "200":
+          description: OK
+  /accounts/forgot-password:
+    post:
+      summary: Submit email address to reset the password
+      responses:
+        "200":
+          description: OK
+  /accounts/validate-reset-token:
+    post:
+      summary: Validate the reset password token
+      responses:
+        "200":
+          description: OK
+  /accounts/reset-password:
+    post:
+      summary: Reset the password for an account
+      responses:
+        "200":
+          description: OK
+  /accounts:
+    get:
+      summary: Get a list of all accounts (Admin only)
+      responses:
+        "200":
+          description: OK
+    post:
+      summary: Create a new account (Admin only)
+      responses:
+        "200":
+          description: OK
+  /accounts/{id}:
+    get:
+      summary: Get a single account by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    put:
+      summary: Update an account
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    delete:
+      summary: Delete an account
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
