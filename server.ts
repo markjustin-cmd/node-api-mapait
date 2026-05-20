@@ -11,7 +11,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors({ origin: '*', credentials: true }));
+app.use(cors({ 
+     origin: 'https://angular-21-boilerplate-mapait.onrender.com', 
+     credentials: true }));
 
 // Routes
 app.use('/accounts', accountsController);
