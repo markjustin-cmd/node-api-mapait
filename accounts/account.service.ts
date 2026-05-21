@@ -174,28 +174,54 @@ async function sendVerificationEmail(account: any, origin: any) {
   let message;
   if (origin) {
     const verifyUrl = `${origin}/account/verify-email?token=${account.verificationToken}`;
-    message = `<p>Please click the below link to verify your email address:</p><p><a href="${verifyUrl}">${verifyUrl}</a></p>`;
+    message = `
+      <div style="text-align: center; margin: 30px 0;">
+        <a href="${verifyUrl}" style="background-color: #3b5bdb; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: bold;">Verify My Email</a>
+      </div>
+      <p style="color: #94a3b8; font-size: 13px;">Or copy this link: <a href="${verifyUrl}" style="color: #3b5bdb;">${verifyUrl}</a></p>
+    `;
   } else {
     message = `<p>Please use the token to verify your email address with the <code>/accounts/verify-email</code> api route:</p><p><code>${account.verificationToken}</code></p>`;
   }
   await sendEmail({
     to: account.email,
-    subject: 'Sign-up Verification API – Verify Email',
-    html: `<h4>Verify Email</h4><p>Thanks for registering!</p>${message}`
+    subject: 'Sign-up Verification – Verify Email',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 10px;">
+        <div style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <h1 style="color: #1e293b; font-size: 28px; margin-bottom: 10px;">Verify Email</h1>
+          <hr style="border: none; border-top: 2px solid #3b5bdb; margin-bottom: 20px;">
+          <p style="color: #475569; font-size: 16px;">Thanks for registering!</p>
+          <p style="color: #475569; font-size: 16px;">Please click the button below to verify your email address:</p>
+          ${message}
+          <p style="color: #94a3b8; font-size: 12px; margin-top: 20px;">If you did not register, please ignore this email.</p>
+        </div>
+      </div>
+    `
   });
 }
 
 async function sendAlreadyRegisteredEmail(email: any, origin: any) {
   let message;
   if (origin) {
-    message = `<p>If you don't know your password please visit the <a href="${origin}/account/forgot-password">forgot password</a> page.</p>`;
+    message = `<p style="color: #475569;">If you don't know your password please visit the <a href="${origin}/account/forgot-password" style="color: #3b5bdb;">forgot password</a> page.</p>`;
   } else {
-    message = `<p>If you don't know your password you can reset it via the <code>/accounts/forgot-password</code> api route.</p>`;
+    message = `<p style="color: #475569;">If you don't know your password you can reset it via the <code>/accounts/forgot-password</code> api route.</p>`;
   }
   await sendEmail({
     to: email,
-    subject: 'Sign-up Verification API – Email Already Registered',
-    html: `<h4>Email Already Registered</h4><p>Your email <strong>${email}</strong> is already registered.</p>${message}`
+    subject: 'Sign-up Verification – Email Already Registered',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 10px;">
+        <div style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <h1 style="color: #1e293b; font-size: 28px; margin-bottom: 10px;">Email Already Registered</h1>
+          <hr style="border: none; border-top: 2px solid #3b5bdb; margin-bottom: 20px;">
+          <p style="color: #475569; font-size: 16px;">Your email <strong>${email}</strong> is already registered.</p>
+          ${message}
+          <p style="color: #94a3b8; font-size: 12px; margin-top: 20px;">If you did not request this, please ignore this email.</p>
+        </div>
+      </div>
+    `
   });
 }
 
@@ -203,13 +229,28 @@ async function sendPasswordResetEmail(account: any, origin: any) {
   let message;
   if (origin) {
     const resetUrl = `${origin}/account/reset-password?token=${account.resetToken}`;
-    message = `<p>Please click the below link to reset your password, the link will be valid for 1 day:</p><p><a href="${resetUrl}">${resetUrl}</a></p>`;
+    message = `
+      <div style="text-align: center; margin: 30px 0;">
+        <a href="${resetUrl}" style="background-color: #3b5bdb; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: bold;">Reset Password</a>
+      </div>
+      <p style="color: #94a3b8; font-size: 13px;">Or copy this link: <a href="${resetUrl}" style="color: #3b5bdb;">${resetUrl}</a></p>
+    `;
   } else {
     message = `<p>Please use the below token to reset your password with the <code>/accounts/reset-password</code> api route:</p><p><code>${account.resetToken}</code></p>`;
   }
   await sendEmail({
     to: account.email,
-    subject: 'Sign-up Verification API – Reset Password',
-    html: `<h4>Reset Password Email</h4>${message}`
+    subject: 'Sign-up Verification – Reset Password',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 10px;">
+        <div style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <h1 style="color: #1e293b; font-size: 28px; margin-bottom: 10px;">Reset Password</h1>
+          <hr style="border: none; border-top: 2px solid #3b5bdb; margin-bottom: 20px;">
+          <p style="color: #475569; font-size: 16px;">Please click the button below to reset your password. The link is valid for 1 day.</p>
+          ${message}
+          <p style="color: #94a3b8; font-size: 12px; margin-top: 20px;">If you did not request this, please ignore this email.</p>
+        </div>
+      </div>
+    `
   });
 }
