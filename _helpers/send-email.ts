@@ -7,8 +7,8 @@ export default async function sendEmail({ to, subject, html, from = config.email
     port: 465,
     secure: true,
     auth: {
-      user: process.env.SMTP_USER || config.smtpOptions.auth.user,
-      pass: process.env.SMTP_PASS || config.smtpOptions.auth.pass
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
     }
   });
   try {

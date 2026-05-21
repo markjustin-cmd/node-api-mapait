@@ -10,11 +10,6 @@
     "emailFrom": "mapaitmarkjustin@gmail.com",
     "smtpOptions": {
         "host": "smtp.gmail.com",
-        "port": 465,
-        "secure": true,
-        "auth": {
-            "user": "mapaitmarkjustin@gmail.com",
-            "pass": "xdinxsgmjzngvlbi"
-        }
+        "port": 465
     }
 }
