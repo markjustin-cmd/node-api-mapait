@@ -7,13 +7,13 @@
         "database": "sql12827511"
     },
     "secret": "supersecretkey123",
-    "emailFrom": "jordane.weimann@ethereal.email",
+    "emailFrom": "mapaitmarkjustin@gmail.com",
     "smtpOptions": {
-        "host": "smtp.ethereal.email",
+        "host": "smtp.gmail.com",
         "port": 587,
         "auth": {
-            "user": "jordane.weimann@ethereal.email",
-            "pass": "aF8vhEj52NuVQJFWz5"
+            "user": "mapaitmarkjustin@gmail.com",
+            "pass": "htvlypuifnyimntk"
         }
     }
 }
