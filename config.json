@@ -1,0 +1,20 @@
+{
+    "database": {
+        "host": "sql12.freesqldatabase.com",
+        "port": 3306,
+        "user": "sql12827511",
+        "password": "iXcasjlsNS",
+        "database": "sql12827511"
+    },
+    "secret": "supersecretkey123",
+    "emailFrom": "mapaitmarkjustin@gmail.com",
+    "smtpOptions": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "mapaitmarkjustin@gmail.com",
+            "pass": "xdinxsgmjzngvlbi"
+        }
+    }
+}
