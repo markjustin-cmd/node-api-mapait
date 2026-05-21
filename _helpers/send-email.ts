@@ -2,15 +2,18 @@ import nodemailer from 'nodemailer';
 import config from '../config.json';
 export default async function sendEmail({ to, subject, html, from = config.emailFrom }: any) {
   const transporter = nodemailer.createTransport({
-    ...config.smtpOptions,
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 10000
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: config.smtpOptions.auth.user,
+      pass: config.smtpOptions.auth.pass
+    }
   });
   try {
     await transporter.sendMail({ from, to, subject, html });
+    console.log('Email sent successfully to:', to);
   } catch (err) {
     console.error('Email sending failed:', err);
-    // Don't throw - allow registration to succeed even if email fails
   }
 }
