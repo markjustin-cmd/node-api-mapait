@@ -9,7 +9,7 @@ export default async function sendEmail({ to, subject, html, from = config.email
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'onboarding@resend.dev',
+        from: 'mapaitmarkjustin@gmail.com',
         to: [to],
         subject: subject,
         html: html
